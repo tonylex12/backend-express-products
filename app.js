@@ -4,6 +4,8 @@ const md5 = require("blueimp-md5");
 
 const { getStoredProducts, storedProducts } = require("./data/products");
 
+const { getStoredCustomers, storedCustomers } = require("./data/customers");
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -16,6 +18,8 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
+
+// Products
 
 app.get("/products", async (req, res) => {
   const storedProducts = await getStoredProducts();
@@ -83,6 +87,74 @@ app.delete("/products/:id", async (req, res) => {
   existingProducts.splice(productIndex, 1);
   await storedProducts(existingProducts);
   res.status(200).json({ message: "Product deleted successfully." });
+});
+
+// Customers
+
+app.get("/customers", async (req, res) => {
+  const storedCustomers = await getStoredCustomers();
+  res.json({ customers: storedCustomers });
+  res.status(200);
+});
+
+app.get("/customers/:id", async (req, res) => {
+  const storedCustomers = await getStoredCustomers();
+  const customer = storedCustomers.find(
+    (customer) => customer.id == req.params.id
+  );
+  res.json({ customer });
+});
+
+app.post("/customers", async (req, res) => {
+  const existingCustomers = await getStoredCustomers();
+  const customerData = req.body;
+  const newCustomer = {
+    id: md5(req.body.email + Date.now),
+    ...customerData,
+  };
+  const updatedCustomers = [newCustomer, ...existingCustomers];
+  await storedCustomers(updatedCustomers);
+  res.status(201).json({ message: "Stored new post.", post: newCustomer });
+});
+
+app.put("/customers/:id", async (req, res) => {
+  const existingCustomers = await getStoredCustomers();
+  const customerId = req.params.id;
+  const customerIndex = existingCustomers.findIndex(
+    (customer) => customer.id == customerId
+  );
+
+  if (customerIndex === -1) {
+    return res.status(404).json({ message: "Customer not found." });
+  }
+
+  const updatedCustomer = {
+    ...existingCustomers[customerIndex],
+    ...req.body,
+  };
+
+  existingCustomers[customerIndex] = updatedCustomer;
+  await storedCustomers(existingCustomers);
+  res.status(200).json({
+    message: "Customer updated successfully.",
+    customer: updatedCustomer,
+  });
+});
+
+app.delete("/customers/:id", async (req, res) => {
+  const existingCustomers = await getStoredCustomers();
+  const customerId = req.params.id.trim();
+  const customerIndex = existingCustomers.findIndex(
+    (customer) => customer.id.trim() === customerId
+  );
+
+  if (customerIndex === -1) {
+    return res.status(404).json({ message: "Customer not found." });
+  }
+
+  existingCustomers.splice(customerIndex, 1);
+  await storedCustomers(existingCustomers);
+  res.status(200).json({ message: "Customer deleted successfully." });
 });
 
 console.log("Listening on port 8080...");

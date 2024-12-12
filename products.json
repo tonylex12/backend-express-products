@@ -1,1 +1,40 @@
-{"products":[{"id":"6ebc370e8c1b950ca6782c88de8fe1b4","title":"Samsung Galaxy S20 FE","description":"Celular de gama media alta","category":"celulares","price":"1500","discount":"0.05","rating":"4","stock":"50","brand":"Samsung","weight":"1200"},{"id":"a59bf0667e60e01ec1293acf8f94d5a7","title":"iPhone 15 Pro Max","description":"Celular de alta gama","category":"celulares","price":"4500","discount":"0","rating":"4","brand":"Apple","weight":"1400","stock":"100"},{"id":"469ab0413caf6541103028a059b871fa","title":"Producto1","description":"Camisa blanca de verano","category":"Ropa","price":"24.5","discount":"0.05","rating":"4","stock":"20","brand":"Lacroix","weight":"200"}]}
+{
+  "products": [
+    {
+      "id": "6ebc370e8c1b950ca6782c88de8fe1b4",
+      "title": "Samsung Galaxy S20 FE",
+      "description": "Celular de gama media alta",
+      "category": "celulares",
+      "price": "1500",
+      "discount": "0.05",
+      "rating": "4",
+      "stock": "50",
+      "brand": "Samsung",
+      "weight": "1200"
+    },
+    {
+      "id": "a59bf0667e60e01ec1293acf8f94d5a7",
+      "title": "iPhone 15 Pro Max",
+      "description": "Celular de alta gama",
+      "category": "celulares",
+      "price": "4500",
+      "discount": "0",
+      "rating": "4",
+      "brand": "Apple",
+      "weight": "1400",
+      "stock": "100"
+    },
+    {
+      "id": "469ab0413caf6541103028a059b871fa",
+      "title": "Producto1",
+      "description": "Camisa blanca de verano",
+      "category": "Ropa",
+      "price": "24.5",
+      "discount": "0.05",
+      "rating": "4",
+      "stock": "20",
+      "brand": "Lacroix",
+      "weight": "200"
+    }
+  ]
+}

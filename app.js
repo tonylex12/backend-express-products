@@ -157,5 +157,5 @@ app.delete("/customers/:id", async (req, res) => {
   res.status(200).json({ message: "Customer deleted successfully." });
 });
 
-console.log("Listening on port 8080...");
+console.log(`Listening on http://localhost:8080`);
 app.listen(8080);

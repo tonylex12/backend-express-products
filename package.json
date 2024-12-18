@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +14,8 @@
     "body-parser": "^1.20.3",
     "express": "^4.21.1",
     "react-crash-course-backend": "file:"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }

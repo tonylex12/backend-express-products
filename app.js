@@ -46,7 +46,7 @@ app.post("/products", async (req, res) => {
   };
   const updatedProducts = [newProduct, ...existingProducts];
   await storedProducts(updatedProducts);
-  res.status(201).json({ message: "Stored new post.", post: newProduct });
+  res.status(201).json({ message: "Stored new product.", post: newProduct });
 });
 
 app.put("/products/:id", async (req, res) => {
@@ -114,7 +114,7 @@ app.post("/customers", async (req, res) => {
   };
   const updatedCustomers = [newCustomer, ...existingCustomers];
   await storedCustomers(updatedCustomers);
-  res.status(201).json({ message: "Stored new post.", post: newCustomer });
+  res.status(201).json({ message: "Stored new customer.", post: newCustomer });
 });
 
 app.put("/customers/:id", async (req, res) => {
